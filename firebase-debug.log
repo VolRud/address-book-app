@@ -1,0 +1,25 @@
+[debug] [2018-12-04T20:21:33.248Z] ----------------------------------------------------------------------
+[debug] [2018-12-04T20:21:33.251Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2018-12-04T20:21:33.251Z] CLI Version:   6.1.2
+[debug] [2018-12-04T20:21:33.251Z] Platform:      win32
+[debug] [2018-12-04T20:21:33.251Z] Node Version:  v10.10.0
+[debug] [2018-12-04T20:21:33.253Z] Time:          Tue Dec 04 2018 22:21:33 GMT+0200 (GMT+02:00)
+[debug] [2018-12-04T20:21:33.253Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-12-04T20:21:33.265Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-12-04T20:21:33.266Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\projects\address-book-app
+
+Before we get started, keep in mind:
+
+  * You are currently outside your home directory
+

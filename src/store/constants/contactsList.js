@@ -1,0 +1,9 @@
+export const CREATE_NEW_CONTACT = 'CREATE_NEW_CONTACT';
+export const DELETE_CONTACT = 'DELETE_CONTACT';
+export const GET_CONTACTS = 'GET_CONTACTS';
+export const CHANGE_CONTACT_FORM_STATE = 'CHANGE_CONTACT_FORM_STATE';
+export const UPDATE_CONTACT = 'UPDATE_CONTACT';
+export const FIND_CONTACT = 'FIND_CONTACT';
+
+export const SUCCESS = '_SUCCESS';
+export const FAIL = '_FAIL';

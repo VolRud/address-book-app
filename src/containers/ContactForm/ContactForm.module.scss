@@ -1,0 +1,40 @@
+.contactFormWrapper{
+    width: 600px;
+    padding: 30px 10px;
+    margin: 20px 150px;
+    input{
+        margin-top: 30px;
+        display: block;
+        width: 100%
+    }
+    .buttons{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 50px;
+        .delete, .cancel, .confirm{
+            height: 25px;
+            width: 85px;
+            display: inline-block;
+            cursor: pointer;
+            line-height: 25px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .delete{
+            color: #FFFFFF;
+            background-color: red;
+    
+        }
+        .buttonsCreateUser{
+
+            .cancel{
+                border: 1px solid #000000;
+            }
+            .confirm{
+                color: #FFFFFF;
+                background-color: #009900;
+                margin-left: 20px;
+            }
+        }
+    }
+}
