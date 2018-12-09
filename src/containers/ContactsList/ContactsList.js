@@ -27,7 +27,9 @@ class ContactsList extends Component {
         if(filteredContacts.length === 0){
             return <p> No contacts ...</p>
         } else {
-            return filteredContacts.map(contact=><Contact key={contact.id} contactData={contact} {...this.props} />)
+            return filteredContacts.map(contact=><div className={styles.contact}>
+                <Contact key={contact.id} contactData={contact} {...this.props} />
+            </div>)
         }
     }
 
@@ -51,7 +53,9 @@ class ContactsList extends Component {
                 type="text"
                 onChange={this.handleFind} 
                 placeholder='Search...'/>
-            {this.showContacts()}
+            <div className={styles.contactsBlock}>
+                {this.showContacts()}
+            </div>
             <Link to='/create-contact'>
                 <div className={styles.addNew} onClick={this.addNewContact}>+</div>
             </Link>

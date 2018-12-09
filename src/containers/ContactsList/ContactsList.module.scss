@@ -1,19 +1,16 @@
 .contactsWrap{
     margin: 20px 150px;
-    // border: 2px solid red;
     width: 600px;
     input{
         height: 30px;
         width: 596px;
         margin: 20px 0;
     }
-    input:before{
-        content: 'X';
-        position: absolute;
+    .contactsBlock{
+        .contact:nth-child(odd){
+            background-color: #EBEBEB;
+        }
     }
-    .contactsBlock:nth-child(odd){
-        background-color: red;
-    }   
     .addNew{
         background-color: #EBEBEB;
         border: 1px solid #000000;
