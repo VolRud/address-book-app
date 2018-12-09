@@ -27,8 +27,8 @@ class ContactsList extends Component {
         if(filteredContacts.length === 0){
             return <p> No contacts ...</p>
         } else {
-            return filteredContacts.map(contact=><div className={styles.contact}>
-                <Contact key={contact.id} contactData={contact} {...this.props} />
+            return filteredContacts.map(contact=><div  key={contact.id} className={styles.contact}>
+                <Contact contactData={contact} {...this.props} />
             </div>)
         }
     }
@@ -83,21 +83,20 @@ const mapStateToProps = (state) => {
     return {
         filteredContacts, contactsLoaded, findContact,
     };
-  };
-  
-  const mapDispatchToProps = dispatch => (
-    {
-      getContacts: () => dispatch(getContacts()),
-      changeContactFormState: (formData) => dispatch(changeContactFormState(formData)),
-      findContact: (value) => dispatch(findContact(value)),
+};
 
-    }
-  );
-  
-  export default connect(mapStateToProps, mapDispatchToProps)(ContactsList);
-  
-  ContactsList.propTypes = {
-    getContacts: PropTypes.func.isRequired,
-    changeContactFormState: PropTypes.func.isRequired,
-    contactsLoaded: PropTypes.bool.isRequired,
-  };
+const mapDispatchToProps = dispatch => (
+  {
+    getContacts: () => dispatch(getContacts()),
+    changeContactFormState: (formData) => dispatch(changeContactFormState(formData)),
+    findContact: (value) => dispatch(findContact(value)),
+  }
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactsList);
+
+ContactsList.propTypes = {
+  getContacts: PropTypes.func.isRequired,
+  changeContactFormState: PropTypes.func.isRequired,
+  contactsLoaded: PropTypes.bool.isRequired,
+};

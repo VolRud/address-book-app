@@ -8,7 +8,6 @@ import {
     SUCCESS, 
     FAIL,
 } from '../constants/contactsList';
-
  
 const initialState = {
    contacts: [],
@@ -66,7 +65,7 @@ const contactsList = (state = initialState, action) => {
         case CREATE_NEW_CONTACT + FAIL:
         case UPDATE_CONTACT+ FAIL:
             console.log('ERROR', payload);
-
+            break;
         default:
         return {
             ...state

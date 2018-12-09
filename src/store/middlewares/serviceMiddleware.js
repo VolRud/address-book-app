@@ -5,6 +5,10 @@ export default store => next => action => {
 	const dbContacts = firebase.firestore().collection('contacts');
 	const { type, payload, } = action;
 	
+	let docRef = '';
+	if(payload && payload.hasOwnProperty('id')){
+		docRef = dbContacts.doc(payload.id);
+	}
 	if(type === 'GET_CONTACTS'){
 		dbContacts.get()
 		.then(snapshot => {
@@ -41,17 +45,15 @@ export default store => next => action => {
 		})
 	);
 	} else if(action.type==='DELETE_CONTACT'){
-		var docRef = dbContacts.doc(action.payload);
-		docRef.delete().then(()=>{		console.log('docRef', docRef); return next({
+		docRef.delete().then(()=>next({
 			type: type+'_SUCCESS',
-			payload
-		})}).catch(error=>next({
+			payload: payload.id
+		})).catch(error=>next({
 			type: type+'_FAIL',
 			payload:error,
 		}));
 	} else if(action.type==='UPDATE_CONTACT'){
-		const { name, id, email} = action.payload;
-		var docRef = dbContacts.doc(id);
+		const { name, email} = action.payload;
 		docRef.update({name,email})
 		.then(()=>next({
 			type: type + '_SUCCESS',

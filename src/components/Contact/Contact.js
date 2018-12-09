@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './Contact.module.scss'
+import styles from './Contact.module.scss';
 
 const editContact = (props) => {
-    const { contactData: { name, email, id, }} = props;
-    props.changeContactFormState({
+    const { contactData: { name, email, id, }, changeContactFormState, history, } = props;
+    changeContactFormState({
         type: 'edit',
         name, email, id
     });
-    props.history.push('/edit-contact');
+    history.push('/edit-contact')
 }
 
 const Contact = (props) => {
@@ -18,7 +18,7 @@ const Contact = (props) => {
         isGmail = '(gmail account)'
     }
     return(
-        <div className={styles.oneContact} onClick={()=>{editContact(props)}}>
+        <div className={styles.contact} onClick={()=>{editContact(props)}}>
             <span  className={styles.name}>{name} {isGmail}</span>
             <span  className={styles.email}>{email}</span>
             <div className={styles.close}></div>

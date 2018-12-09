@@ -12,6 +12,7 @@ class ContactForm extends Component{
         this.state = {
             name: '',
             email: '',
+            wrongEmail: false,
         };
         this.handleChangeName = this.handleChangeName.bind(this);
         this.handleChangeEmail = this.handleChangeEmail.bind(this);
@@ -26,6 +27,11 @@ class ContactForm extends Component{
         this.setState({
             email: e.target.value
         })
+        if(this.state.wrongEmail){
+            this.setState({
+                wrongEmail: false
+            })
+        }
     }
     componentDidMount(){
         const { formData, history, } = this.props;
@@ -39,14 +45,14 @@ class ContactForm extends Component{
         }
     }
     delete = () => {
-        const { deleteContact, formData, } = this.props;
-        deleteContact(formData.id);
+        const { deleteContact, formData:{id}, } = this.props;
+        deleteContact({id});
     }
     confirm = () => {
-        const { formData: {type, id,}, createNewContact, updateContact } = this.props;
+        const { formData: {type, id,}, createNewContact, updateContact, history, } = this.props;
         const { name, email, } = this.state;
         if(!emailValidator(email)){
-            alert('Wrong Email!');
+            this.setState({ wrongEmail: true })
             return;
         }
         if(type==='addNew'){
@@ -55,10 +61,12 @@ class ContactForm extends Component{
         if(type==='edit'){
             updateContact({ id, name, email, });
         }
+        history.push('/');
     }
 
     render(){
-        const { formData, } = this.props;
+        const { wrongEmail, } = this.state;
+        const { formData, history, } = this.props;
         if(formData && formData.type === null) return null;
         const { type, } = formData;
         return(
@@ -72,22 +80,20 @@ class ContactForm extends Component{
                 <input 
                     type="text" 
                     defaultValue={this.state.email} 
-                    onChange={this.handleChangeEmail} 
+                    onChange={this.handleChangeEmail}
+                    className={wrongEmail ? styles.redBorder : null}
                     placeholder='Email'/>
+                {wrongEmail ? <span>Wrong email!</span> : null}
                 
                 <div className={styles.buttons}>
                     {type==='edit' ? 
-                        <Link to='/'>
-                            <div className={styles.delete} onClick={this.delete}>Delete</div>
-                        </Link>
+                    <Link to='/'>
+                        <div className={styles.delete} onClick={this.delete}>Delete</div>
+                    </Link>
                     :null}
                     <div className={styles.buttonsCreateUser}>
-                        <Link to='/'>
-                            <div className={styles.cancel} onClick={this.cancel}>Cancel</div>
-                        </Link>
-                        <Link to='/'>
-                            <div className={styles.confirm} onClick={this.confirm}>Ok</div>
-                        </Link>
+                        <div className={styles.cancel} onClick={()=>{history.push('/')}}>Cancel</div>
+                        <div className={styles.confirm} onClick={this.confirm}>Ok</div>
                     </div>
                 </div>
             </div>
